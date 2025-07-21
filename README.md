@@ -15,9 +15,11 @@ https://www.python.org/downloads/
 дуже важливо — на першому екрані встановлення поставити галочку Add Python 3.x to PATH
 
 перевірити, що Python встановлено — запустити cmd.exe та ввести команду:
+
 python --version
 
 там же в cmd.exe ввести команду встановлення модуля OpenAI для Python:
+
 python -m pip install openai
 
 3) бібліотека для роботи з JSON nlohmann\json.hpp (наявна в папці з проєктом),
