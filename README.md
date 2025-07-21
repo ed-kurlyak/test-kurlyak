@@ -49,3 +49,5 @@ static std::string includePath = "C:\\Users\\black4\\Desktop\\test-kurlyak-debug
 static const char* ApiKeyStr = "";
 
 Після клонування проекту GitHub у Visual Stduio 2019 (як вже говорилося) необхідно виставити проект як Debug x86, та у властивостях проекту вказати С++ 17.
+
+У разі якщо будуть якісь проблеми з компіляцією, в налашуваннях проекту встановити C++ -> Language -> Conformance Mode -> No (обов'язково No).
