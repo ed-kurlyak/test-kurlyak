@@ -31,16 +31,19 @@ https://github.com/nlohmann/json/blob/develop/single_include/nlohmann/json.hpp
 На початку файлу cpp із програмою є такий, як нижче, блок коду з коментарями для заміни значень трьох змінних:
 
 //змінна #1 змінити для правильної роботи програми
+
 //шлях до vcvars32.bat для налаштування компілятора cl.exe
 
 static std::string vcvarsPath = "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\Build\\vcvars32.bat";
 
 //змінна #2 змінити для правильної роботи програми
+
 //шлях до папки, в якій розміщена папка з JSON бібліотекою nlohmann\json.hpp
 
 static std::string includePath = "C:\\Users\\black4\\Desktop\\test-kurlyak-debug-x86\\Sample";
 
 //змінна #3 змінити для правильної роботи програми
+
 //API ключ
 
 static const char* ApiKeyStr = "";
