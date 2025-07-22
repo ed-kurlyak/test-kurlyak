@@ -17,7 +17,7 @@
 #define USE_CURL 1
 
 //кількість упішних ітерацій яка потрібна
-#define ITERATIONS_NEED_COUNT 2
+#define ITERATIONS_NEED_COUNT 15
 
 namespace fs = std::filesystem;
 
@@ -57,32 +57,6 @@ struct Point
 static long long g_Dt;
 static long long g_Dt2;
 static long long g_Dt3;
-
-//файли результату ітерації копіюються в окремі папки для кожної ітерації
-static std::string g_FilesToCopy[] = {
-"algorithm.exe",
-"points.json",
-"points2.json",
-"points3.json",
-"corrected.json",
-"corrected2.json",
-"corrected3.json",
-"generated_code.cpp",
-"result.txt",
-"compile_log.txt" };
-
-//список тимчасових файлів які треба видалити після роботи программи
-static std::string g_FilesToDelete[] = {
-"algorithm.exe",
-"corrected.json",
-"corrected2.json",
-"corrected3.json",
-"generated_code.cpp",
-"generated_code.obj",
-"result.txt",
-"execution_log.txt",
-"compile_log.txt",
-"temp_prompt.txt"};
 
 //головний запит до ChatGPT
 static const std::string g_MainPromptToChatGPT = u8R"(
@@ -737,10 +711,23 @@ static void Create_Directory(std::string FolderName)
 
 static void Copy_Files_To_Directory(std::string FolderName)
 {
+	//файли результату ітерації копіюються в окремі папки для кожної ітерації
+	static std::string FilesToCopy[] = {
+	"algorithm.exe",
+	"points.json",
+	"points2.json",
+	"points3.json",
+	"corrected.json",
+	"corrected2.json",
+	"corrected3.json",
+	"generated_code.cpp",
+	"result.txt",
+	"compile_log.txt" };
+
 	std::error_code ErrorCode;
 
 	//копіюємо файли в папку
-	for (const auto& File : g_FilesToCopy)
+	for (const auto& File : FilesToCopy)
 	{
 		fs::path Source = File;
 		fs::path Destination = fs::path(FolderName) / File;
@@ -786,8 +773,21 @@ static int Create_Traget_Directory_And_Copy_Result()
 
 static void Delete_Files()
 {
+	//список тимчасових файлів які треба видалити після роботи программи
+	static std::string FilesToDelete[] = {
+	"algorithm.exe",
+	"corrected.json",
+	"corrected2.json",
+	"corrected3.json",
+	"generated_code.cpp",
+	"generated_code.obj",
+	"result.txt",
+	"execution_log.txt",
+	"compile_log.txt",
+	"temp_prompt.txt" };
+
 	//видаляємо тимчасові файли
-	for (const std::string& File : g_FilesToDelete)
+	for (const std::string& File : FilesToDelete)
 	{
 		std::error_code ErrorCode;
 		if (fs::remove(File, ErrorCode))
